@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./avatar_refactoring/
+    container_name: avatar_backend
+    volumes:
+      - .:/app
+    working_dir: /app/avatar_refactoring
+    env_file: .env
+    command: bash /app/avatar_refactoring/scripts/start_dev.sh
+    ports:
+      - "8000:8000"

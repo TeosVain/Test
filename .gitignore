@@ -1,0 +1,5 @@
+.env
+venv/
+**/migrations/*.py
+avatars/
+db.sqlite3
