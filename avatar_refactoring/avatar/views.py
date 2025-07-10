@@ -5,6 +5,8 @@ from avatar.serializers import AvatarWriteSerializer, AvatarReadSerializer
 
 
 class AvatarHandlerViewSet(viewsets.ModelViewSet):
+    '''ViewSet for handling Avatar model operations.'''
+    
     queryset = Avatar.objects.all()
     serializer_class = AvatarReadSerializer
 

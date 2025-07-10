@@ -10,6 +10,7 @@ from django.conf import settings
 
 class AvatarUploadTest(TestCase):
     def setUp(self):
+        '''Set up a test avatar image and calculate its original size.'''
         img = Image.new('RGB', (1000, 800), color='blue')
         buffer = io.BytesIO()
         img.save(buffer, format='JPEG')
@@ -24,6 +25,7 @@ class AvatarUploadTest(TestCase):
 
 
     def test_avatar_processed_and_uploaded(self):
+        '''Test that the avatar is processed and uploaded to S3 with reduced size.'''
         avatar = Avatar.objects.create(image=self.upload_file, name='Test')
         s3 = boto3.client(
             's3',

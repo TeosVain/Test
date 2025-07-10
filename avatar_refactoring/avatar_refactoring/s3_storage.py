@@ -4,16 +4,21 @@ from django.conf import settings
 
 
 class MediaStorage(S3Boto3Storage):
+    '''Custom torage class for media files, using S3 as the backend.'''
+
     bucket_name = 'teos-avatar-bucket'
     location = 'media'
 
 
 class StaticStorage(S3Boto3Storage):
+    '''Custom storage class for static files, using S3 as the backend.'''
+
     bucket_name = 'teos-avatar-bucket'
     location = 'static'
 
 
 def generate_presigned_url(object_key, expires_in=3600):
+    '''Generate a presigned URL for accessing an S3 object.'''
     s3 = boto3.client(
         's3',
         endpoint_url=settings.AWS_S3_ENDPOINT_URL,

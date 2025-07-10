@@ -3,7 +3,11 @@ from io import BytesIO
 from django.core.files.base import ContentFile
 
 
-def resize_avatar(image_field, name, size=(300, 300), format='JPEG', quality=85):
+def resize_avatar(
+        image_field, name, size=(300, 300), format='JPEG', quality=85
+    ):
+    '''Resize an avatar image to a square format,
+    ensuring it is centered and fits within the specified size.'''
     img = Image.open(image_field)
     if format.upper() == 'JPEG' and img.mode != 'RGB':
         img = img.convert('RGB')

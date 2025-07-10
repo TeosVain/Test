@@ -4,6 +4,9 @@ from .utils import resize_avatar
 
 
 class Avatar(models.Model):
+    '''Model representing an avatar image.
+    Name is used as a unique identifier and for naming the file.'''
+
     image = models.ImageField(upload_to='avatars/')
     name = models.CharField(max_length=100, unique=True)
 
